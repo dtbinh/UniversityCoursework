@@ -1,0 +1,165 @@
+Part 1) 
+Queries Used to Create the Tables
+
+CREATE TABLE movies 	(title TEXT, 
+			 year INTEGER, 
+			 director TEXT, 
+			 country TEXT, 
+			 rating REAL, 
+			 genre TEXT, 
+			 gross TEXT, 
+			 producer TEXT, 
+			 PRIMARY KEY(title, year));
+
+CREATE TABLE actors 	(title TEXT, 
+			 year INTEGER,
+			 character_name TEXT, 
+		 	 actor TEXT, 
+			 PRIMARY KEY(title, year), 
+			 FOREIGN KEY(title, year) REFERENCES movies);
+
+CREATE TABLE awards 	(title TEXT, 
+			 year INTEGER, 
+			 award TEXT, 
+			 result TEXT, 
+			 PRIMARY KEY(title, year, award), 
+			 FOREIGN KEY(title, year) REFERENCES movies);
+
+Part 2)
+Queries used 
+1)
+SELECT DISTINCT a1.actor 
+FROM actors a1, actors a2 
+WHERE a1.title = a2.title 
+   AND a1.actor = a2.actor 
+   AND a1.character_name <> a2.character_name;
+
+2)
+SELECT m1.director, AVG(gross) AS AVGG 
+FROM movies m1, (SELECT m.director 
+		FROM movies m, awards a 
+		WHERE a.title = m.title 
+		   AND a.year = m.year 
+		   AND a.award = 'Oscar - Best Picture' 
+		   AND a.result = 'Won') AS d1 
+WHERE m1.director = d1.director 
+GROUP BY m1.director;
+
+3)
+SELECT producer, sum(gross) AS total 
+FROM movies 
+GROUP BY producer;
+
+4)
+SELECT DISTINCT m1.producer 
+FROM movies m1, movies m2 
+WHERE m1.producer = m2.producer 
+   AND m1.title <> m2.title 
+   AND m1.year = m2.year 
+   AND m1.gross > 50000000 
+   AND m2.gross >50000000;
+
+5)
+SELECT director, title, gross 
+FROM movies 
+WHERE rating>8 
+ORDER BY director, gross;
+
+6)
+SELECT title 
+FROM awards 
+WHERE year>1989 
+   AND year<2000 
+   AND award LIKE '% - Best Actor' 
+   AND result = 'Nominated' 
+GROUP BY title 
+HAVING count(*) >1;
+
+7)
+SELECT DISTINCT title 
+FROM awards 
+WHERE title not in 
+	(SELECT title 
+	 FROM awards 
+	 WHERE result = 'Nominated') 
+   AND year > 1989  
+   AND year < 2000;
+
+8)
+SELECT DISTINCT a.title 
+FROM movies m, awards a 
+WHERE m.genre = 'Comedy' 
+   AND (m.year>1989 OR m.year<1960) 
+   AND m.title = a.title 
+   AND a.year = m.year
+   AND (a.award LIKE '% Director' OR a.award LIKE '% Picture') 
+   AND a.result = 'Won';
+
+9)
+SELECT DISTINCT m1.director 
+FROM movies m1, movies m2
+WHERE m1.genre = 'Comedy' 
+   AND m2.genre = 'Drama' 
+   AND m1.director = m2.director 
+   AND m1.rating > m2.rating;
+
+10)
+SELECT actor 
+FROM movies NATURAL JOIN actors 
+GROUP BY actor 
+HAVING min(gross)>50000000;
+
+11)
+SELECT award, avg(rating) AS averating 
+FROM movies NATURAL JOIN awards 
+WHERE result = 'Won' 
+GROUP BY award;
+
+12)
+SELECT award 
+FROM (SELECT award, avg(rating) AS averagerating
+ 	FROM movies NATURAL JOIN awards 
+	WHERE result = 'Won' GROUP BY award) AS t, 
+	(SELECT max(t2.averagerating) 
+	FROM (	SELECT award, avg(rating) AS averagerating 
+		FROM movies NATURAL JOIN awards 
+		WHERE result = 'Won' 
+		GROUP BY award) AS t2) AS t3 
+WHERE t3.max = t.averagerating;
+
+13)
+SELECT DISTINCT m1.title AS rating, m2.title AS winner 
+FROM (movies NATURAL JOIN awards) m1, (movies NATURAL JOIN awards) m2 
+WHERE m1.year  = m2.year 
+   AND m1.award = m2.award 
+   AND m1.title <> m2.title 
+   AND m1.rating > m2.rating 
+   AND m2.result = 'Won';
+
+14)
+SELECT DISTINCT t1.character_name 
+FROM (movies NATURAL JOIN actors) AS t1, (movies NATURAL JOIN actors) AS t2 
+WHERE t2.character_name=t1.character_name
+    AND t1.country<>t2.country;
+
+15) 
+SELECT decade, count(*)*100/
+	(SELECT count(*) 
+	FROM (	SELECT title, year /10 *10 AS decade, director, country, rating, genre, gross, producer 
+		FROM movies) AS decaded_movies NATURAL JOIN 
+		(SELECT title, year /10 *10 AS decade, award, result 
+		FROM awards) AS decaded_awards 
+	WHERE decade > 1950 
+	    AND decade = decaded_movies2.decade 
+	    AND result = 'Won' 
+	GROUP BY decade) AS percent 
+
+FROM (	SELECT title, year/10*10 AS decade, director, country, rating, genre, gross, producer 
+	FROM movies) AS decaded_movies2 NATURAL JOIN 
+	(SELECT title, year /10 *10 AS decade, award, result 
+	FROM awards) AS decaded_awards2 
+WHERE decade>1950 
+   AND country = 'US' 
+   AND result = 'Won' 
+GROUP BY decade
+ORDER BY decade;
