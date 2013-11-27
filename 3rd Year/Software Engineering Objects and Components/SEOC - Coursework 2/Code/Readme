@@ -1,0 +1,16 @@
+1) Start the program by running the jar file PlantSystem.jar
+2) Choose an option 1-5. To place an order, press 1
+3) Type or copy the SKU number from the list that should appear
+4) Input a number of pallets (recommended between 50-400), as it works in realtime
+5) Input the Distribution Centre Code from the three choices (531, 532, 533)
+6) The order is now placed. Watch it update by pressing 2
+7) Once the order is finished, it is removed from the queue and the next one is started.
+   7a) Try sending multiple orders to the same plant to see this behavior
+8) Send as many orders as you want - each plant will process its unique order via a FIFO basis
+9) Press 3 to send a minor alert (delay the production)
+   9a) 	Select which plant you wish to send the minor alert to (remember to select
+	a plant currently producing an order)
+   9b)	Send another minor alert to fix this behavior (again selecting the correct plant)
+10) Press 4 to send a major alert (terminate the current production)
+   10a)	Select which plant you wish to send the major alert to (remember to select
+	a plant currently producing an order)
