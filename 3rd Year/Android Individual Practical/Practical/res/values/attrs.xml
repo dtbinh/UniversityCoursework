@@ -1,0 +1,14 @@
+<resources>
+
+    <declare-styleable name="com.deezapps.widget.HorizontalPager">
+        <attr format="dimension" name="pageWidth" />
+    </declare-styleable>
+    <declare-styleable name="com.deezapps.widget.PagerControl">
+        <attr format="color" name="barColor" />
+        <attr format="color" name="highlightColor" />
+        <attr format="integer" name="fadeDelay" />
+        <attr format="integer" name="fadeDuration" />
+        <attr format="dimension" name="roundRectRadius" />
+    </declare-styleable>
+
+</resources>

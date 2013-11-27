@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/databaselayout"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="left"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/hotelname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/hoteladdress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/hotelname"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/hotelnumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/hoteladdress"
+        android:inputType="phone"
+        android:textColor="@color/phone"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/hoteldistance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/hotelnumber"
+        android:text="TextView" />
+
+    <RatingBar
+        android:id="@+id/hotelrating"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/hoteldistance"
+        android:isIndicator="true"
+        android:numStars="5" />
+
+    <Button
+        android:id="@+id/hoteloptions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/hotelrating"
+        android:layout_alignParentRight="true"
+        android:text="Options" />
+
+    <ImageView
+        android:id="@+id/optionShow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/hoteloptions"
+        android:layout_toLeftOf="@+id/hoteloptions"
+        android:src="@drawable/trashcan3" />
+
+</RelativeLayout>

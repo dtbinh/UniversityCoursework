@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Practical</string>
+    <string name="menu">Return to menu</string>
+    <string name="directions">I am sorry. I cannot connect to the internet. Shall I provide you with offline directions?</string>
+
+    <string-array name="nothingarray">
+        <item>I am sorry. I cannot provide you directions to that location.</item>
+    </string-array>
+    <string-array name="cuisine">
+        <item>African</item>
+        <item>American</item>
+        <item>Breakfast</item>
+        <item>Buffet</item>
+        <item>Burgers</item>
+        <item>Chinese</item>
+        <item>Coffee</item>
+        <item>Diner</item>
+        <item>English</item>
+        <item>Fish and Chips</item>
+        <item>French</item>
+        <item>Indian</item>
+        <item>International</item>
+        <item>Italian</item>
+        <item>Japanese</item>
+        <item>Korean</item>
+        <item>Mexican</item>
+        <item>Pizza</item>
+        <item>Pub</item>
+        <item>Sandwiches</item>
+        <item>Scottish</item>
+        <item>Seafood</item>
+        <item>Spanish</item>
+        <item>Steakhouse</item>
+        <item>Sushi</item>
+        <item>Take Away</item>
+        <item>Tapas</item>
+        <item>Thai</item>
+        <item>Turkish</item>
+        <item>Vegetarian</item>
+        <item>Vietnamese</item>
+    </string-array>
+    <string-array name="landmarks">
+        <item>Edinburgh Castle</item>
+        <item>Waverley Train Station</item>
+        <item>Greyfriars Bobby</item>
+        <item>Scottish Parliment/Royal Mile</item>
+        <item>Haymarket Train Station</item>
+        <item>Princes Street</item>
+        <item>Edinburgh Airport</item>
+        <item>Pollock Halls</item>
+        <item>Kings Buildings</item>
+        <item>Bus Station</item>
+        <item>Tollcross</item>
+    </string-array>
+    <string-array name="hotelduvin">
+        <item>1. Head west on Crichton St toward Charles St</item>
+        <item>2. Turn right onto Charles St</item>
+        <item>3. Turn left toward Bristo Pl</item>
+        <item>4. Continue straight onto Bristo Pl</item>
+        <item>Destination will be on the left</item>
+    </string-array>
+    <string-array name="tenhillplace">
+        <item>1. Head east on Crichton St toward Potterrow</item>
+        <item>2. Turn left onto Potterrow</item>
+        <item>3. Turn right onto Marshall St</item>
+        <item>4. Turn right onto Nicolson Square</item>
+        <item>5. Turn left onto Nicolson St/A7</item>
+        <item>6. Turn right onto Hill Pl</item>
+    </string-array>
+    <string-array name="richmondplace">
+        <item>1. Head east on Crichton St toward</item>
+        <item>2. Turn right onto Chapel St</item>
+        <item>3. Turn left onto W Nicolson St</item>
+        <item>4. Continue onto W Richmond St</item>
+        <item>5. Turn left onto Richmond Pl</item>
+    </string-array>
+    <string-array name="kennethmackenzie">
+        <item>1. Head east on Crichton St toward</item>
+        <item>2. Turn right onto Chapel St</item>
+        <item>3. Turn left onto W Nicolson St</item>
+        <item>4. Continue onto W Richmond St</item>
+        <item>5. Turn left onto Richmond Pl</item>
+    </string-array>
+    <string-array name="travelodgecentralhotel">
+        <item>1. Head east on Crichton St toward Potterrow</item>
+        <item>2. Turn right onto Chapel St</item>
+        <item>3. Turn left onto W Nicolson St</item>
+        <item>4. Continue onto W Richmond St</item>
+        <item>5. Turn left onto Pleasance</item>
+        <item>6. Continue onto St. Marys St</item>
+        <item>   Destination will be on the left</item>
+    </string-array>
+    <string-array name="eurohostel">
+        <item>1. Head west on Crichton St toward Charles St</item>
+        <item>2. Turn right onto Charles St</item>
+        <item>3. Turn left toward Bristo Pl</item>
+        <item>4. Continue straight onto Bristo Pl</item>
+        <item>5. Continue onto George IV Bridge</item>
+        <item>6. Turn right onto Chambers St</item>
+        <item>7. Turn left onto Guthrie St</item>
+        <item>   Destination will be on the left</item>
+    </string-array>
+    <string-array name="nineteenmeadowsplace">
+        <item>1. Head west on Crichton St toward Charles St</item>
+        <item>2. Continue straight onto George Square</item>
+        <item>3. Continue onto George Square Ln</item>
+        <item>4. Turn right toward Melville Dr/A700</item>
+        <item>5. Turn left at Route 1/Route 75</item>
+        <item>6. Turn left toward Melville Dr/A700</item>
+        <item>7. Turn left onto Melville Dr/A700</item>
+        <item>8. Turn right onto Meadow Pl</item>
+        <item>Destination will be on the left</item>
+    </string-array>
+    <string-array name="holidayinnexpressroyalmile">
+        <item>1. Head east on Crichton St toward Potterrow</item>
+        <item>2. Turn left onto Potterrow</item>
+        <item>3. Turn right onto Marshall St</item>
+        <item>4. Turn left onto Nicolson Square</item>
+        <item>5. Turn left onto Nicolson St/A7</item>
+        <item>Continue to follow A7</item>
+        <item>6. Turn right onto Infirmary St</item>
+        <item>7. Slight left to stay on Infirmary St</item>
+        <item>8. Turn right onto Cowgate</item>
+        <item>Destination will be on the left</item>
+    </string-array>
+    <string-array name="grassmarkethotel">
+        <item>1. Head west on Crichton St toward Charles St</item>
+        <item>2. Turn right onto Charles St</item>
+        <item>3. Turn left toward Bristo Pl</item>
+        <item>4. Continue straight onto Bristo Pl</item>
+        <item>5. Continue onto George IV Bridge</item>
+        <item>6. Turn left onto Candlemaker Row</item>
+        <item>7. Turn right to stay on Candlemaker Row</item>
+        <item>8. At the roundabout, take the 1st exit onto Cowgatehead</item>
+        <item>9. Turn right onto W Bow</item>
+        <item>10. Turn left onto Grassmarket</item>
+        <item>Destination will be on the left</item>
+    </string-array>
+    <string-array name="apexcityhotel">
+        <item>1. Head west on Crichton St toward Charles St</item>
+        <item>2. Turn right onto Charles St</item>
+        <item>3. Turn left toward Bristo Pl</item>
+        <item>4. Continue straight onto Bristo Pl</item>
+        <item>5. Continue onto George IV Bridge</item>
+        <item>6. Turn left onto Candlemaker Row</item>
+        <item>7. Turn right to stay on Candlemaker Row</item>
+        <item>8. At the roundabout, take the 1st exit onto Cowgatehead</item>
+        <item>9. Continue onto Grassmarket</item>
+        <item>Destination will be on the left</item>
+    </string-array>
+    <string-array name="ibisedinburgh">
+        <item>1. Head east on Crichton St toward Potterrow</item>
+        <item>2. Turn left onto Potterrow</item>
+        <item>3. Turn right onto Marshall St</item>
+        <item>4. Turn left onto Nicolson Square</item>
+        <item>5. Turn left onto Nicolson St/A7</item>
+        <item>Continue to follow A7</item>
+        <item>6. Turn left onto Hunter Square</item>
+        <item>7. Continue onto Blair St</item>
+        <item>Destination will be on the right</item>
+    </string-array>
+    <string-array name="smartcityhostels">
+        <item>1. Head east on Crichton St toward Potterrow</item>
+        <item>2. Turn left onto Potterrow</item>
+        <item>3. Turn right onto Marshall St</item>
+        <item>4. Turn left onto Nicolson Square</item>
+        <item>5. Turn left onto Nicolson St/A7</item>
+        <item>Continue to follow A7</item>
+        <item>6. Turn right onto Infirmary St</item>
+        <item>7. Slight left to stay on Infirmary St</item>
+        <item>8. Continue onto Blackfriars St</item>
+        <item>Destination will be on the left</item>
+    </string-array>
+    <string-array name="advocatesapartments">
+        <item>1. Head west on Crichton St toward Charles St</item>
+        <item>2. Turn right onto Charles St</item>
+        <item>3. Turn left toward Bristo Pl</item>
+        <item>4. Continue straight onto Bristo Pl</item>
+        <item>5. Continue onto George IV Bridge</item>
+        <item>6. Turn right onto High St</item>
+        <item>Destination will be on the left</item>
+    </string-array>
+    <string-array name="apexinternational">
+        <item>1. Head west on Crichton St toward Charles St</item>
+        <item>2. Turn right onto Charles St</item>
+        <item>3. Turn left toward Bristo Pl</item>
+        <item>4. Continue straight onto Bristo Pl</item>
+        <item>5. Continue onto George IV Bridge</item>
+        <item>6. Turn left onto Candlemaker Row</item>
+        <item>7. Turn right to stay on Candlemaker Row</item>
+        <item>8. At the roundabout, take the 1st exit onto Cowgatehead</item>
+        <item>9. Continue onto Grassmarket</item>
+        <item>Destination will be on the left</item>
+    </string-array>
+    <string-array name="hotelmissoni">
+        <item>1. Head west on Crichton St toward Charles St</item>
+        <item>2. Turn right onto Charles St</item>
+        <item>3. Turn left toward Bristo Pl</item>
+        <item>4. Continue straight onto Bristo Pl</item>
+        <item>5. Continue onto George IV Bridge</item>
+        <item>Destination will be on the left</item>
+    </string-array>
+    <string-array name="themeadowshotel">
+        <item>1. Head east on Crichton St toward Potterrow</item>
+        <item>2. Turn right onto Chapel St</item>
+        <item>3. Continue onto Buccleuch St</item>
+        <item>4. Continue onto Hope Park Crescent</item>
+        <item>5. Continue straight onto Summerhall Crescent/A700</item>
+        <item>Continue to follow A700</item>
+        <item>6. Continue onto Causewayside</item>
+        <item>Destination will be on the right</item>
+    </string-array>
+    <string-array name="bankhotel">
+        <item>1. Head east on Crichton St toward Potterrow</item>
+        <item>2. Turn left onto Potterrow</item>
+        <item>3. Turn right onto Marshall St</item>
+        <item>4. Turn left onto Nicolson Square</item>
+        <item>5. Turn left onto Nicolson St/A7</item>
+        <item>Continue to follow A7</item>
+        <item>Destination will be on the right</item>
+    </string-array>
+    <string-array name="radissonblu">
+        <item>1. Head east on Crichton St toward Potterrow</item>
+        <item>2. Turn left onto Potterrow</item>
+        <item>3. Turn right onto Marshall St</item>
+        <item>4. Turn left onto Nicolson Square</item>
+        <item>5. Turn left onto Nicolson St/A7</item>
+        <item>Continue to follow A7</item>
+        <item>6. Turn right onto High St</item>
+        <item>7. Turn right onto Niddry St</item>
+        <item>Destination will be on the left</item>
+    </string-array>
+    <string-array name="castleapartments">
+        <item>1. Head west on Crichton St toward Charles St</item>
+        <item>2. Turn right onto Charles St</item>
+        <item>3. Turn left toward Bristo Pl</item>
+        <item>4. Continue straight onto Bristo Pl</item>
+        <item>5. Continue onto George IV Bridge</item>
+        <item>6. Turn left onto Victoria St</item>
+        <item>7. Turn right onto Upper Bow</item>
+        <item>Take the stairs</item>
+        <item>8. At the roundabout, take the 1st exit onto Johnston Terrace</item>
+        <item>Destination will be on the right</item>
+    </string-array>
+    <string-array name="royalmileapartments">
+        <item>1. Head west on Crichton St toward Charles St</item>
+        <item>2. Turn right onto Charles St</item>
+        <item>3. Turn left toward Bristo Pl</item>
+        <item>4. Continue straight onto Bristo Pl</item>
+        <item>5. Continue onto George IV Bridge</item>
+        <item>6. Turn right onto High St</item>
+        <item>Destination will be on the left</item>
+    </string-array>
+    <string-array name="brodieshostels">
+        <item>1. Head east on Crichton St toward Potterrow</item>
+        <item>2. Turn left onto Potterrow</item>
+        <item>3. Turn right onto Marshall St</item>
+        <item>4. Turn left onto Nicolson Square</item>
+        <item>5. Turn left onto Nicolson St/A7</item>
+        <item>Continue to follow A7</item>
+        <item>6. Turn right onto High St</item>
+        <item>Destination will be on the left</item>
+    </string-array>
+    <string-array name="frasersuites">
+        <item>1. Head west on Crichton St toward Charles St</item>
+        <item>2. Turn right onto Charles St</item>
+        <item>3. Turn left toward Bristo Pl</item>
+        <item>4. Continue straight onto Bristo Pl</item>
+        <item>5. Continue onto George IV Bridge</item>
+        <item>6. Turn right onto High St</item>
+        <item>7. Turn left onto St. Giles St</item>
+        <item>Destination will be on the right</item>
+    </string-array>
+    <string-array name="barceloedinburghcarlton">
+        <item>1. Head east on Crichton St toward Potterrow</item>
+        <item>2. Turn left onto Potterrow</item>
+        <item>3. Turn right onto Marshall St</item>
+        <item>4. Turn left onto Nicolson Square</item>
+        <item>5. Turn left onto Nicolson St/A7</item>
+        <item>Continue to follow A7</item>
+        <item>Destination will be on the right</item>
+    </string-array>
+    <string-array name="thescotsmanhotel">
+        <item>1. Head east on Crichton St toward Potterrow</item>
+        <item>2. Turn left onto Potterrow</item>
+        <item>3. Turn right onto Marshall St</item>
+        <item>4. Turn left onto Nicolson Square</item>
+        <item>5. Turn left onto Nicolson St/A7</item>
+        <item>Continue to follow A7</item>
+        <item>Destination will be on the left</item>
+    </string-array>
+    <string-array name="jurysinnedinburgh">
+        <item>1. Head east on Crichton St toward Potterrow</item>
+        <item>2. Turn left onto Potterrow</item>
+        <item>3. Turn right onto Marshall St</item>
+        <item>4. Turn left onto Nicolson Square</item>
+        <item>5. Turn left onto Nicolson St/A7</item>
+        <item>Continue to follow A7</item>
+        <item>6. Turn right onto High St</item>
+        <item>7. Turn left onto Jeffrey St</item>
+        <item>Destination will be on the left</item>
+    </string-array>
+    <string-array name="balmoral">
+        <item>1. Head east on Crichton St toward Potterrow</item>
+        <item>2. Turn left onto Potterrow</item>
+        <item>3. Turn right onto Marshall St</item>
+        <item>4. Turn left onto Nicolson Square</item>
+        <item>5. Turn left onto Nicolson St/A7</item>
+        <item>Continue to follow A7</item>
+        <item>6. Turn left onto Princes St</item>
+        <item>Destination will be on the left</item>
+    </string-array>
+    <string-array name="bestwestern">
+        <item>1. Head west on Crichton St toward Charles St</item>
+        <item>2. Turn right onto Charles St</item>
+        <item>3. Turn left toward Potterrow</item>
+        <item>4. Turn left onto Potterrow</item>
+        <item>5. Continue onto Teviot Pl</item>
+        <item>6. Continue onto Lauriston Pl</item>
+        <item>Destination will be on the left</item>
+    </string-array>
+    <string-array name="premierinn">
+        <item>1. Head west on Crichton St toward Charles St</item>
+        <item>2. Turn right onto Charles St</item>
+        <item>3. Turn left toward Potterrow</item>
+        <item>4. Turn left onto Potterrow</item>
+        <item>5. Continue onto Teviot Pl</item>
+        <item>6. Continue onto Lauriston Pl</item>
+        <item>Destination will be on the left</item>
+    </string-array>
+    <string-array name="novotel">
+        <item>1. Head west on Crichton St toward Charles St</item>
+        <item>2. Turn right onto Charles St</item>
+        <item>3. Turn left toward Potterrow</item>
+        <item>4. Turn left onto Potterrow</item>
+        <item>5. Continue onto Teviot Pl</item>
+        <item>6. Continue onto Lauriston Pl</item>
+        <item>Destination will be on the left</item>
+    </string-array>
+    <string-array name="mercurepointhotel">
+        <item>1. Head west on Crichton St toward Charles St</item>
+        <item>2. Turn right onto Charles St</item>
+        <item>3. Turn left toward Potterrow</item>
+        <item>4. Turn left onto Potterrow</item>
+        <item>5. Continue onto Teviot Pl</item>
+        <item>6. Continue onto Lauriston Pl</item>
+        <item>7. Turn right onto Lauriston St</item>
+        <item>8. Turn left onto W Port</item>
+        <item>9. Continue onto Bread St</item>
+        <item>Destination will be on the left</item>
+    </string-array>
+    <string-array name="thewitcherybythecastle">
+        <item>1. Head west on Crichton St toward Charles St</item>
+        <item>2. Turn right onto Charles St</item>
+        <item>3. Turn left toward Bristo Pl</item>
+        <item>4. Continue straight onto Bristo Pl</item>
+        <item>5. Continue onto George IV Bridge</item>
+        <item>6. Turn left onto Victoria St</item>
+        <item>7. Turn right onto Upper Bow</item>
+        <item>Take the stairs</item>
+        <item>8. At the roundabout, take the 2nd exit onto Castlehill</item>
+    </string-array>
+    <string-array name="counanhotel">
+        <item>1. Head east on Crichton St toward Potterrow</item>
+        <item>2. Turn right onto Chapel St</item>
+        <item>3. Turn left onto W Crosscauseway</item>
+        <item>4. Turn right onto Clerk St/A7</item>
+        <item>5. Continue onto Newington Rd/A701</item>
+        <item>Continue to follow A701</item>
+        <item>Destination will be on the left</item>
+    </string-array>
+    <string-array name="salisburyhotel">
+        <item>1. Head east on Crichton St toward Potterrow</item>
+        <item>2. Turn right onto Chapel St</item>
+        <item>3. Turn left onto W Crosscauseway</item>
+        <item>4. Turn right onto Clerk St/A7</item>
+        <item>5. Continue onto Newington Rd/A701</item>
+        <item>6. Turn left onto Salisbury Rd</item>
+        <item>Destination will be on the left</item>
+    </string-array>
+
+    <string name="taxi">You can call Central Taxi Services at 01312292468 or hail a taxi cab that looks like this:</string>
+    <string name="nothing">I am sorry. There is nothing currently here.</string>
+    <string name="menu_insert">Add Hotel</string>
+    <string name="menu_delete">Delete Hotel</string>
+    <string name="hotel_summary">Summary</string>
+    <string name="hotel_description">Delete Hotel</string>
+    <string name="hotel_edit_summary">Summary</string>
+    <string name="hotel_edit_description">Description</string>
+    <string name="hotel_edit_confirm">Confirm</string>
+
+    <color name="listcolor">#FFE87C</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="phone">#70BFFF</color>
+
+    <string name="DirectionsDescription">How to get to the Forum</string>
+    <string name="knowledge">What do you want to know?</string>
+    <string name="edinburgh">Local knowledge about Edinburgh</string>
+
+    <string-array name="listknowledge">
+        <item>Currency</item>
+        <item>Weather</item>
+        <item>Language</item>
+        <item>Electronics</item>
+        <item>Useful Numbers</item>
+    </string-array>
+    <string-array name="information">
+        <item>Scotland, like the rest of the United Kingdom, uses the Sterling Pound (£). Coins range from 1p, 2p, 5p, 10p, 20p, 50p, £1, and £2. Notes range from £5, £10, £20, £50, and £100. </item>
+        <item>The weather in Edinburgh depends on the season, but generally will be overcast with a chance of rain. Bring your jacket, as the wind can sometimes pick up. </item>
+        <item>Edinburgh locals primarily speak English. A small portion of the population can speak the local dialect of "Scots" or the tradition language of "Gaelic."</item>
+    </string-array>
+
+    <string name="DistancePrompt">Distance From Forum</string>
+
+    <string-array name="distance_array">
+        <item>Close (5 Minutes)</item>
+        <item>Near (10 Minutes)</item>
+        <item>Far (15 Minutes)</item>
+    </string-array>
+    <string-array name="hotel_options">
+        <item>Edit Hotel</item>
+        <item>Delete Hotel</item>
+    </string-array>
+
+</resources>
