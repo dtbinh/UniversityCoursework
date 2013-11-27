@@ -1,0 +1,18 @@
+Freeform select
+Polygon Select, double click to close.
+
+Ability to edit(move)/ erase points
+Ability to delete regions
+Ability to copy regions (similar objects)
+Ability to select regions by clicking region or link in list
+Ability to name regions
+
+Fill in shows selected regions
+
+Hierarchical colour regions (darker if subset of larger region)
+
+Save function 
+Upload function
+ 
+
+Additional possible sampling by colour sampling
