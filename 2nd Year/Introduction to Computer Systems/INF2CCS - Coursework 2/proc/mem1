@@ -1,0 +1,21 @@
+Memory test file for jump and halt instructions.
+Shown as hex address and instruction at that address.
+Lines starting with a percent are words loaded into
+memory consecutively starting at address 0, and are in hex.
+
+00: jump 8
+
+%08000002
+
+04: jump 12
+
+%08000003
+
+08: jump 4
+
+%08000001
+
+0c: halt
+
+%0000000c
+

@@ -1,0 +1,1105 @@
+$date
+     Nov 26, 2010       14:22:50
+$end
+
+$version
+              SystemC 2.2.0 --- Nov  1 2009 14:31:28
+$end
+
+$timescale
+     1 ns
+$end
+
+$scope module SystemC $end
+$var wire    1  aaa  clock       $end
+$var wire    1  aab  reset       $end
+$var wire    2  aac  wreg_addr_mux [1:0]  $end
+$var wire    3  aad  b_mux [2:0]  $end
+$var wire    3  aae  func [2:0]  $end
+$var wire    1  aaf  reg_write_mux       $end
+$var wire    1  aag  a_mux       $end
+$var wire    1  aah  pc_mux       $end
+$var wire    1  aai  addr_mux       $end
+$var wire    1  aaj  ldReg       $end
+$var wire    1  aak  ldPC       $end
+$var wire    1  aal  ldMAR       $end
+$var wire    1  aam  ldMDSR       $end
+$var wire    1  aan  ldIR       $end
+$var wire    1  aao  ldMDLR       $end
+$var wire    1  aap  mem_rd       $end
+$var wire    1  aaq  mem_wrt       $end
+$var wire   32  aar  ir [31:0]  $end
+$var wire    1  aas  zero       $end
+$var wire   32  aat  mdsr [31:0]  $end
+$var wire   32  aau  mem_data [31:0]  $end
+$var wire   32  aav  pc [31:0]  $end
+$var wire   32  aaw  mar [31:0]  $end
+$var wire   32  aax  next_pc [31:0]  $end
+$var wire   32  aay  cycleCount [31:0]  $end
+$var wire    1  aaz  halt       $end
+$var wire    3  aba  cur_cycle [2:0]  $end
+$var wire   32  abb  opcode [31:0]  $end
+$var wire   32  abc  subfunct [31:0]  $end
+$var wire    3  abd  next_cycle [2:0]  $end
+$var wire   32  abe  mdlr [31:0]  $end
+$var wire    5  abf  a_addr [4:0]  $end
+$var wire    5  abg  b_addr [4:0]  $end
+$var wire    5  abh  wreg_addr [4:0]  $end
+$var wire   32  abi  a_bus [31:0]  $end
+$var wire   32  abj  b_bus [31:0]  $end
+$var wire   32  abk  b_reg [31:0]  $end
+$var wire   32  abl  alu [31:0]  $end
+$var wire   32  abm  reg_write_data [31:0]  $end
+$var wire   32  abn  R0 [31:0]  $end
+$var wire   32  abo  R1 [31:0]  $end
+$var wire   32  abp  R2 [31:0]  $end
+$var wire   32  abq  R3 [31:0]  $end
+$var wire   32  abr  R4 [31:0]  $end
+$var wire   32  abs  R5 [31:0]  $end
+$var wire   32  abt  R6 [31:0]  $end
+$var wire   32  abu  R7 [31:0]  $end
+$var wire   32  abv  R8 [31:0]  $end
+$var wire   32  abw  R9 [31:0]  $end
+$var wire   32  abx  R10 [31:0]  $end
+$var wire   32  aby  R11 [31:0]  $end
+$var wire   32  abz  R12 [31:0]  $end
+$var wire   32  aca  R13 [31:0]  $end
+$var wire   32  acb  R14 [31:0]  $end
+$var wire   32  acc  R15 [31:0]  $end
+$var wire   32  acd  R16 [31:0]  $end
+$var wire   32  ace  R17 [31:0]  $end
+$var wire   32  acf  R18 [31:0]  $end
+$var wire   32  acg  R19 [31:0]  $end
+$var wire   32  ach  R20 [31:0]  $end
+$var wire   32  aci  R21 [31:0]  $end
+$var wire   32  acj  R22 [31:0]  $end
+$var wire   32  ack  R23 [31:0]  $end
+$var wire   32  acl  R24 [31:0]  $end
+$var wire   32  acm  R25 [31:0]  $end
+$var wire   32  acn  R26 [31:0]  $end
+$var wire   32  aco  R27 [31:0]  $end
+$var wire   32  acp  R28 [31:0]  $end
+$var wire   32  acq  R29 [31:0]  $end
+$var wire   32  acr  R30 [31:0]  $end
+$var wire   32  acs  R31 [31:0]  $end
+$var wire   32  act  mem(0) [31:0]  $end
+$var wire   32  acu  mem(4) [31:0]  $end
+$var wire   32  acv  mem(8) [31:0]  $end
+$var wire   32  acw  mem(12) [31:0]  $end
+$var wire   32  acx  mem(16) [31:0]  $end
+$var wire   32  acy  mem(20) [31:0]  $end
+$var wire   32  acz  mem(24) [31:0]  $end
+$var wire   32  ada  mem(28) [31:0]  $end
+$var wire   32  adb  mem(32) [31:0]  $end
+$var wire   32  adc  mem(36) [31:0]  $end
+$var wire   32  add  mem(40) [31:0]  $end
+$var wire   32  ade  mem(44) [31:0]  $end
+$var wire   32  adf  mem(48) [31:0]  $end
+$var wire   32  adg  mem(52) [31:0]  $end
+$var wire   32  adh  mem(56) [31:0]  $end
+$var wire   32  adi  mem(60) [31:0]  $end
+$var wire   32  adj  mem(64) [31:0]  $end
+$var wire   32  adk  mem(68) [31:0]  $end
+$var wire   32  adl  mem(72) [31:0]  $end
+$var wire   32  adm  mem(76) [31:0]  $end
+$var wire   32  adn  mem_addr [31:0]  $end
+$upscope $end
+$enddefinitions  $end
+
+$comment
+All initial values are dumped below at time 0 sec = 0 timescale units.
+$end
+
+$dumpvars
+0aaa
+0aab
+b0 aac
+b1 aad
+b0 aae
+0aaf
+1aag
+0aah
+0aai
+0aaj
+1aak
+0aal
+0aam
+1aan
+0aao
+1aap
+0aaq
+b0 aar
+0aas
+b0 aat
+b0 aau
+b0 aav
+b0 aaw
+b0 aax
+b0 aay
+0aaz
+b0 aba
+b0 abb
+b0 abc
+b1 abd
+b0 abe
+b0 abf
+b0 abg
+b0 abh
+b0 abi
+b0 abj
+b0 abk
+b0 abl
+b0 abm
+b0 abn
+b0 abo
+b0 abp
+b0 abq
+b0 abr
+b0 abs
+b0 abt
+b0 abu
+b0 abv
+b0 abw
+b0 abx
+b0 aby
+b0 abz
+b0 aca
+b0 acb
+b0 acc
+b0 acd
+b0 ace
+b0 acf
+b0 acg
+b0 ach
+b0 aci
+b0 acj
+b0 ack
+b0 acl
+b0 acm
+b0 acn
+b0 aco
+b0 acp
+b0 acq
+b0 acr
+b0 acs
+b0 act
+b0 acu
+b0 acv
+b0 acw
+b0 acx
+b0 acy
+b0 acz
+b0 ada
+b0 adb
+b0 adc
+b0 add
+b0 ade
+b0 adf
+b0 adg
+b0 adh
+b0 adi
+b0 adj
+b0 adk
+b0 adl
+b0 adm
+b0 adn
+$end
+
+#3
+1aab
+b100000000000010000000001000000 act
+b10001100001000100000000000000000 acu
+b10001100001000110000000000000100 acv
+b10001100001001000000000000001000 acw
+b10000110010100000100000 acx
+b101001000010100000100010 acy
+b10101100001001010000000000001100 acz
+b10000100000110000000000000001 ada
+b10100100000100000000000000001 adb
+b1100000000000000000000001100 adc
+b1000000000000000000000001001 add
+b11111000000000000000001000 ade
+b11 adi
+b101 adj
+b11 adk
+
+#5
+b100 abj
+b100 abl
+
+#7
+0aab
+b100000000000010000000001000000 aau
+b100 aax
+b100 abm
+
+#10
+1aaa
+b1 aay
+
+#11
+b1 aac
+b11 aad
+0aag
+1aai
+1aaj
+0aak
+0aan
+0aap
+b100000000000010000000001000000 aar
+b10001100001000100000000000000000 aau
+b100 aav
+b1 aba
+b1000 abb
+b0 abd
+
+#13
+b1 abh
+
+#15
+0aaa
+
+#16
+b1 abg
+b1000000 abj
+b1000000 abl
+
+#18
+b1000000 aax
+b1000000 abm
+
+#20
+1aaa
+b10 aay
+
+#21
+b0 aac
+b1 aad
+1aag
+0aai
+0aaj
+1aak
+1aan
+1aap
+b0 aba
+b1 abd
+b1000000 abo
+b100 adn
+
+#23
+b0 abh
+
+#25
+0aaa
+
+#26
+b100 abi
+b100 abj
+b1000000 abk
+b1000 abl
+
+#28
+b1000 aax
+b1000 abm
+
+#30
+1aaa
+b11 aay
+
+#31
+b11 aad
+0aag
+1aai
+0aak
+1aal
+0aan
+0aap
+b10001100001000100000000000000000 aar
+b10001100001000110000000000000100 aau
+b1000 aav
+b1 aba
+b100011 abb
+b10 abd
+b0 adn
+
+#35
+0aaa
+
+#36
+b1 abf
+b10 abg
+b1000000 abi
+b0 abj
+b0 abk
+b1000000 abl
+
+#38
+b1000000 aax
+b1000000 abm
+
+#40
+1aaa
+b100 aay
+
+#41
+0aal
+1aao
+1aap
+b101 aau
+b1000000 aaw
+b10 aba
+b11 abd
+b1000000 adn
+
+#45
+0aaa
+
+#50
+1aaa
+b101 aay
+
+#51
+b1 aac
+1aaf
+1aaj
+0aao
+0aap
+b11 aba
+b0 abd
+b101 abe
+
+#53
+b10 abh
+b101 abm
+
+#55
+0aaa
+
+#60
+1aaa
+b110 aay
+
+#61
+b0 aac
+b1 aad
+0aaf
+1aag
+0aai
+0aaj
+1aak
+1aan
+1aap
+b10001100001000110000000000000100 aau
+b0 aba
+b1 abd
+b101 abp
+b1000 adn
+
+#63
+b0 abh
+b1000000 abm
+
+#65
+0aaa
+
+#66
+b1000 abi
+b100 abj
+b101 abk
+b1100 abl
+
+#68
+b1100 aax
+b1100 abm
+
+#70
+1aaa
+b111 aay
+
+#71
+b11 aad
+0aag
+1aai
+0aak
+1aal
+0aan
+0aap
+b10001100001000110000000000000100 aar
+b10001100001001000000000000001000 aau
+b1100 aav
+b1 aba
+b100 abc
+b10 abd
+b1000000 adn
+
+#75
+0aaa
+
+#76
+b11 abg
+b1000000 abi
+b0 abk
+b1000100 abl
+
+#78
+b1000100 aax
+b1000100 abm
+
+#80
+1aaa
+b1000 aay
+
+#81
+0aal
+1aao
+1aap
+b11 aau
+b1000100 aaw
+b10 aba
+b11 abd
+b1000100 adn
+
+#85
+0aaa
+
+#90
+1aaa
+b1001 aay
+
+#91
+b1 aac
+1aaf
+1aaj
+0aao
+0aap
+b11 aba
+b0 abd
+b11 abe
+
+#93
+b11 abh
+b11 abm
+
+#95
+0aaa
+
+#100
+1aaa
+b1010 aay
+
+#101
+b0 aac
+b1 aad
+0aaf
+1aag
+0aai
+0aaj
+1aak
+1aan
+1aap
+b10001100001001000000000000001000 aau
+b0 aba
+b1 abd
+b11 abq
+b1100 adn
+
+#103
+b0 abh
+b1000100 abm
+
+#105
+0aaa
+
+#106
+b1100 abi
+b11 abk
+b10000 abl
+
+#108
+b10000 aax
+b10000 abm
+
+#110
+1aaa
+b1011 aay
+
+#111
+b11 aad
+0aag
+1aai
+0aak
+1aal
+0aan
+0aap
+b10001100001001000000000000001000 aar
+b10000110010100000100000 aau
+b10000 aav
+b1 aba
+b1000 abc
+b10 abd
+b1000100 adn
+
+#115
+0aaa
+
+#116
+b100 abg
+b1000000 abi
+b1000 abj
+b0 abk
+b1001000 abl
+
+#118
+b1001000 aax
+b1001000 abm
+
+#120
+1aaa
+b1100 aay
+
+#121
+0aal
+1aao
+1aap
+b0 aau
+b1001000 aaw
+b10 aba
+b11 abd
+b1001000 adn
+
+#125
+0aaa
+
+#130
+1aaa
+b1101 aay
+
+#131
+b1 aac
+1aaf
+1aaj
+0aao
+0aap
+b11 aba
+b0 abd
+b0 abe
+
+#133
+b100 abh
+b0 abm
+
+#135
+0aaa
+
+#140
+1aaa
+b1110 aay
+
+#141
+b0 aac
+b1 aad
+0aaf
+1aag
+0aai
+0aaj
+1aak
+1aan
+1aap
+b10000110010100000100000 aau
+b0 aba
+b1 abd
+b10000 adn
+
+#143
+b0 abh
+b1001000 abm
+
+#145
+0aaa
+
+#146
+b10000 abi
+b100 abj
+b10100 abl
+
+#148
+b10100 aax
+b10100 abm
+
+#150
+1aaa
+b1111 aay
+
+#151
+b0 aad
+0aag
+1aai
+1aaj
+0aak
+0aan
+0aap
+b10000110010100000100000 aar
+b101001000010100000100010 aau
+b10100 aav
+b1 aba
+b0 abb
+b100000 abc
+b0 abd
+b1001000 adn
+
+#153
+b101 abh
+
+#155
+0aaa
+
+#156
+b10 abf
+b11 abg
+b101 abi
+b11 abj
+b11 abk
+b1000 abl
+
+#158
+b1000 aax
+b1000 abm
+
+#160
+1aaa
+b10000 aay
+
+#161
+b1 aad
+1aag
+0aai
+0aaj
+1aak
+1aan
+1aap
+b0 aba
+b1 abd
+b1000 abs
+b10100 adn
+
+#165
+0aaa
+
+#166
+b10100 abi
+b100 abj
+b11000 abl
+
+#168
+b11000 aax
+b11000 abm
+
+#170
+1aaa
+b10001 aay
+
+#171
+b0 aad
+b1 aae
+0aag
+1aai
+1aaj
+0aak
+0aan
+0aap
+b101001000010100000100010 aar
+b10101100001001010000000000001100 aau
+b11000 aav
+b1 aba
+b100010 abc
+b0 abd
+b1001000 adn
+
+#175
+0aaa
+
+#176
+b101 abf
+b100 abg
+b1000 abi
+b0 abj
+b0 abk
+b1000 abl
+
+#178
+b1000 aax
+b1000 abm
+
+#180
+1aaa
+b10010 aay
+
+#181
+b1 aad
+b0 aae
+1aag
+0aai
+0aaj
+1aak
+1aan
+1aap
+b0 aba
+b1 abd
+b11000 adn
+
+#185
+0aaa
+
+#186
+b11000 abi
+b100 abj
+b11100 abl
+
+#188
+b11100 aax
+b11100 abm
+
+#190
+1aaa
+b10011 aay
+
+#191
+b11 aad
+0aag
+1aai
+0aak
+1aal
+1aam
+0aan
+0aap
+b10101100001001010000000000001100 aar
+b10000100000110000000000000001 aau
+b11100 aav
+b1 aba
+b101011 abb
+b1100 abc
+b10 abd
+b1001000 adn
+
+#193
+b0 abh
+
+#195
+0aaa
+
+#196
+b1 abf
+b101 abg
+b1000000 abi
+b1100 abj
+b1000 abk
+b1001100 abl
+
+#198
+b1001100 aax
+b1001100 abm
+
+#200
+1aaa
+b10100 aay
+
+#201
+0aal
+0aam
+1aaq
+b1000 aat
+b1001100 aaw
+b10 aba
+b0 abd
+b1001100 adn
+
+#205
+0aaa
+
+#210
+1aaa
+b10101 aay
+b1000 adm
+
+#211
+b1 aad
+1aag
+0aai
+1aak
+1aan
+1aap
+0aaq
+b0 aba
+b1 abd
+b11100 adn
+
+#215
+0aaa
+
+#216
+b11100 abi
+b100 abj
+b100000 abl
+
+#218
+b100000 aax
+b100000 abm
+
+#220
+1aaa
+b10110 aay
+
+#221
+b0 aad
+b1 aae
+0aag
+1aai
+0aak
+0aan
+0aap
+b10000100000110000000000000001 aar
+b10100100000100000000000000001 aau
+b100000 aav
+b1 aba
+b100 abb
+b1 abc
+b10 abd
+b1001100 adn
+
+#225
+0aaa
+
+#226
+b100 abf
+b11 abg
+b0 abi
+b11 abj
+b11 abk
+b11111111111111111111111111111101 abl
+
+#228
+b11111111111111111111111111111101 aax
+b11111111111111111111111111111101 abm
+
+#230
+1aaa
+b10111 aay
+
+#231
+1aaq
+b10 aba
+b101011 abb
+b0 abd
+
+#235
+0aaa
+
+#240
+1aaa
+b11000 aay
+
+#241
+b1 aad
+b0 aae
+1aag
+0aai
+1aak
+1aan
+1aap
+0aaq
+b0 aba
+b100 abb
+b1 abd
+b100000 adn
+
+#245
+0aaa
+
+#246
+b100000 abi
+b100 abj
+b100100 abl
+
+#248
+b100100 aax
+b100100 abm
+
+#250
+1aaa
+b11001 aay
+
+#251
+b0 aad
+b1 aae
+0aag
+1aai
+0aak
+0aan
+0aap
+b10100100000100000000000000001 aar
+b1100000000000000000000001100 aau
+b100100 aav
+b1 aba
+b101 abb
+b10 abd
+b1001100 adn
+
+#255
+0aaa
+
+#256
+b10 abg
+b0 abi
+b101 abj
+b101 abk
+b11111111111111111111111111111011 abl
+
+#258
+b11111111111111111111111111111011 aax
+b11111111111111111111111111111011 abm
+
+#260
+1aaa
+b11010 aay
+
+#261
+1aaq
+b10 aba
+b101011 abb
+b0 abd
+
+#265
+0aaa
+
+#270
+1aaa
+b11011 aay
+
+#271
+b1 aad
+b0 aae
+1aag
+0aai
+1aak
+1aan
+1aap
+0aaq
+b0 aba
+b101 abb
+b1 abd
+b100100 adn
+
+#275
+0aaa
+
+#276
+b100100 abi
+b100 abj
+b101000 abl
+
+#278
+b101000 aax
+b101000 abm
+
+#280
+1aaa
+b11100 aay
+
+#281
+b10 aac
+b10 aad
+1aah
+1aai
+1aaj
+0aan
+0aap
+b1100000000000000000000001100 aar
+b1000000000000000000000001001 aau
+b101000 aav
+b1 aba
+b11 abb
+b1100 abc
+b0 abd
+b1001100 adn
+
+#283
+b110000 aax
+b11111 abh
+
+#285
+0aaa
+
+#286
+b0 abf
+b0 abg
+b101000 abi
+b0 abj
+b0 abk
+
+#290
+1aaa
+b11101 aay
+
+#291
+b0 aac
+b1 aad
+0aah
+0aai
+0aaj
+1aan
+1aap
+b0 aau
+b110000 aav
+b0 aba
+b1 abd
+b101000 acs
+b110000 adn
+
+#293
+b101000 aax
+b0 abh
+
+#295
+0aaa
+
+#296
+b110000 abi
+b100 abj
+b110100 abl
+
+#298
+b110100 aax
+b110100 abm
+
+#300
+1aaa
+b11110 aay
+
+#301
+1aai
+0aak
+0aan
+0aap
+b0 aar
+b110100 aav
+1aaz
+b1 aba
+b0 abb
+b0 abc
+b1001100 adn
+
+#305
+0aaa
+
+#306
+b110100 abi
+b111000 abl
+
+#308
+b111000 aax
+b111000 abm
+
+#310
+1aaa
+b11111 aay
+

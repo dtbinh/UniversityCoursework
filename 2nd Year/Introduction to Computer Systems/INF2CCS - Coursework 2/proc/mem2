@@ -1,0 +1,93 @@
+Memory test file for all instructions.
+Shown as hex address and instruction at that address.
+Lines starting with a percent are words loaded into
+memory consecutively starting at address 0, and are in hex.
+
+
+First there is a short program
+
+00: addi  $1, $0, 64
+
+%20010040
+
+04: lw  $2, 0($1)
+
+%8c220000
+
+08: lw  $3, 4($1)
+
+%8c230004
+
+0c: lw  $4, 8($1)
+
+%8c240008
+
+10: add  $5, $2, $3
+
+%00432820
+
+14: sub  $5, $5, $4
+
+%00a42822
+
+18: sw  $5, 12($1)
+
+%ac25000c
+
+1c: beq  $4, $3, 36
+
+%10830001
+
+20: bne  $4, $2, 40
+
+%14820001
+
+24: halt
+
+
+
+28: jal 48
+
+%0c00000c
+
+
+
+2c: jump 36
+
+
+
+30: jr $31
+
+%03e00008
+
+%0000000c
+
+34: blank
+
+%00000000
+
+38: blank
+
+%00000000
+
+3c: blank
+
+%00000000
+
+
+Next follows the data values - you can play
+with these to affect which of the two conditional
+branches is taken
+
+40: data: 3
+
+%00000003
+
+44: data: 5
+
+%00000005
+
+48: data: 3
+
+%00000003
+
