@@ -1,0 +1,74 @@
+\documentclass[11pt, a4paper]{article}
+\begin{document}
+
+\title{IVR Coursework 2}
+\author{Craig Innes, Matriculation Number: s0929508 \\
+        Scott Hofman, Matriculation Number: s0943941}
+\date{November 2011}
+\maketitle
+
+\section{Introduction and Split of Work}
+
+\subsection{Split of marks}
+\textbf{Craig Innes s0929508:} X\% \\
+\textbf{Scott Hofman: s0943941:} Y\%
+
+
+\subsection{Assumptions and general approach}
+Programming an autonomous robot to fully clean a room is a difficult task. However, by making a some reasonable assumptions specific to this coursework, we were able to simplify our approach.
+
+Firstly, we assume that we will always be cleaning square rooms, so if we are following a wall and we approach a corner, we can navigate the corner by turning 90 degrees. Also, turning four corners will bring you back to your original corner.
+
+Secondly, we assume that the obstacles - while not always neccessarily being in the centre of the room - will not block the path hugging the outer walls. The robot can follow the outer walls without worring about bumping into obstacles
+
+In an email from Michael Herrmann, we were told that:
+ ``The fact that the room is a square and that the furniture is only in the center is meant to simplify the task"
+ So these assumptions should be valid.
+
+Our general approach to cleaning the room is to move along first wall and at intervals come out from the wall. When either we approach an object, or traverse more than half the distance of the room, we turn and come back to the wall, we then move up the wall a bit and repeat. When it reaches a  wall corner it should turn to face the next wall, then repeat the sweeping out and back process with this wall. Once it has turned four wall corners, it is done, and uses odometry to return to its starting position.
+
+We added distance sensors to the robot to detect objects and walls before we bump into them. 
+
+We also added a compass to obtain a more reliable estimate of the robot's orientation. This seems a reasonable device to add to the robot, as it is inexpensive and accurate. However, if this is infeasible or unreliable in a real world robot, we could simply use the wheel turn measurements to calculate orientation, similar to how we have obtained the x and y distance.
+
+\section{Methods and Implementation}
+\subsection{Part A}
+\subsubsection*{First Steps and Calculating Odometry}
+
+Odometry calculations will only calculate our position relative to the starting position of the robot. In order to figure out the robot's global position in the room, we place our robot near the bottom left corner of the room. We then turn to face the left wall and read off the forward and left sensor values. This will give us our starting position relative to (0,0). We save this position in a variable startPos and calculate our odometry relative to the bottom corner of the room.
+
+We measure our odometry by setting the wheel encoders to zero before any movement. We then perform the movement, then call our function get\_odom to update the odometry using the formulas provided in labs (x = x + 0.5*(dl + dr)*cos(phi) etc.).
+
+To calculate phi, instead of using phi = phi - 0.5(dl - dr)/2R, we simply read the value of the compass using our function get\_bearing. This gives us more reliable estimates of orientation than the wheel encoders.
+
+\subsubsection*{Improving original turn method and turning to walls}
+The turn function provided with the controller was inadequate. Depending on the speed of the robot, the it would either overshoot the desired angle by a few degrees or undershoot it. Our solution to this was to add a fine tuning part to the function. The robot first turns to the target angle to within a fairly generous threshold. Then, if it has overshot or undershot, it makes a very slow small turn to correct for its error.
+
+We also have a separate function for turning to a wall. If a wall is encountered, we make a slow turn clockwise until two distance sensors on the left of the robot have the same distance. When this occurs, the robot will be facing parallel to the wall, so we stop turning.
+
+If we are currently following along a wall, and again encounter a wall, this must mean we are approaching a corner. In this case, we simply make a 90 degree turn to align ourselves with the new wall.
+
+\subsubsection*{The difference between a wall and an obstacle}
+An array called wallFacing stores the current wall we are heading towards. It has a values of t, l, r, and b (corresponding to top, left, bottom, and right). To tell the difference between a piece of furniture and a wall, we check if we are close enough to the wall we are currently heading towards for there to be a wall collision (e.g if we are facing towards the top wall, our y position needs to be close to y = 6). If it is too far away from this value, we are most likely facing a piece of furniture and not a wall.
+
+\subsubsection*{Navigating the room efficiently and finishing condition}
+To navigate the room, we first move to the nearest wall and turn parallel to it. We then move a small distance along the wall until a distance threshold is broken, then turns 90 degrees towards room. The robot then moves forward until either it has travelled more than 3 metres or distance senses/bumps into an obstacle. It then turns 180 degrees and returns to the wall to repeat the cycle. When the robot reaches a corner, it will turn to face the next wall and do the same for that wall. We keep a count of the amount of corners the robot has turned. Once it has turned 4 corners, we know it has covered the entire room, so we can stop and return to the starting position.
+\subsubsection*{Returning Home}
+Using the home\_to function, we can specify two points - our current position using odometry and our desired destination. The function then calculates the vector from our current position to the desired destination (our starting point) and combines that with our current orientation using the dot-product rule (cos(angle) = (a.b)/\textbar a \textbar \textbar b \textbar) to figure out the angle it needs to turn to face our desired destination. The robot then turns that amount and moves forward, using the calc\_dist function to find the euclidean distance to find the distance between the current position and the destination. When this distance is within a small threshold, the robot has returned home, and we can stop.
+
+\subsection*{Part B}
+\subsubsection*{Splitting cleaning space into two parts}
+
+
+\section{Results and Discussion}
+\subsection{Part A}
+\subsubsection*{Obstacles rougly in the centre}
+How much of the room does it clean? How fast? Bumps versus actual pre-emptive distance detections...
+\subsubsection*{Highly scattered obstacles}
+Does cleaning scope suffer? Speed suffer? Does it ever just completely fail?
+\subsubsection*{Additional: Obstacles blocking the outer wall path}
+Why do failures occur? What precisely is happening? Are there possible methods you could use to circumvent obstacles on the perimeter?
+\subsubsection*{Overall results}
+What are the big flaws in our approach. What possible improvements could we make to speed up the robot (at what cost) and also generalise the functionality? Mention that odometry, while stable, may not be reliable in a lot of situations, so can correct by measuring distance to the walls.
+
+\end{document}
