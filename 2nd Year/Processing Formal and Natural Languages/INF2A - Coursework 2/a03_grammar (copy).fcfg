@@ -1,0 +1,115 @@
+#######################################
+# a03_grammar.fcfg
+#
+# Author: Katya Alahverdzhieva, Srini Janarthanam, Bonnie Webber
+# School of Informatics, Edinburgh
+# Date: 15-Nov-2009
+# 
+#######################################
+
+% start S
+
+S[sem=<?ynq>] -> YNQ[sem=?ynq]
+
+S[sem=<?whq>] -> WHQ[sem=?whq]
+
+S[sem=<?dnp1(?dnp2(?tv))>] -> TV[sem=?tv] DNP[sem=?dnp1] DNP[sem=?dnp2]
+# assign the british_end the fire_brigade 
+
+S[sem=<?dnp(?tv(?pp))>] -> TV[sem=?tv] DNP[sem=?dnp] PP[sem=?pp]
+# extinguish the flames from the british_end 
+
+S[sem=<?dnp(?tv)>] -> TV[sem=?tv] DNP[sem=?dnp]
+# rush_to the french_end
+
+YNQ[sem=<?np(?pp)>] -> VCOP[sem=?vcop] EXP[sem=?exp] NP[sem=?np] PP[sem=?pp]
+#is there some problem at the british_end
+
+YNQ[sem=<?np>] -> VCOP[sem=?vcop] EXP[sem=?exp] NP[sem=?np]
+#is there some problem
+
+YNQ[sem=<?dnp(?pp)>] -> VCOP[sem=?vcop] DNP[sem=?dnp] PP[sem=?pp]
+#is the ambulance in the hospital
+
+WHQ[sem=<?np>] -> NP[sem=?np] VCOP[sem=?vcop] EXP[sem=?exp]
+#which resource is there
+
+WHQ[sem=<?dnp(?whnp)>] -> WHNP[sem=?whnp] VCOP[sem=?vcop] DNP[sem=?dnp]
+#where is the ambulance
+
+# NPs - There are standard NPs and DNPs (definite NPs)
+#
+# These are standard NPs like "some resource", "no resource", "which resource"
+#
+NP[sem=<?det(?n)>] -> DET[sem=?det] N[sem=?n]
+NP[sem=<?negdet(?n)>] -> NEGDET[sem=?negdet] N[sem=?n]
+NP[sem=<?whdet(?n)>] -> WHDET[sem=?whdet] N[sem=?n]
+
+# These NPs with definite determiners (or no det) are treated as NAMES
+
+DNP[sem=<?the(?dn)>] -> THE[sem=?the] DN[sem=?dn]
+DNP[sem=<?dn>] -> DN[sem=?dn]
+
+# PPs only refer to named locations: "in the garage", "at the hospital"
+#
+PP[sem=<?dnp(?prep)>] -> PREP[sem=?prep] DNP[sem=?dnp]
+
+#################
+#
+# Lexicon
+#
+#################
+
+# These are the standard and the question determiners
+
+DET[sem=<\P Q . exists x.(P(x) & Q(x)) >] -> 'some'
+NEGDET[sem=<\P Q . -exists x.( P(x) & Q(x)) >] -> 'no'
+WHDET[sem=<\T . exists x.(T(x))>] -> 'which'
+# ADDITIONAL: any
+DET[sem=<\T . exists x.(T(x))>] -> 'any'
+
+# These are nouns which only occur with a definite determiner or no det
+
+DN[sem=<\P.P(fire_brigade)>] -> 'fire_brigade'
+DN[sem=<\P.P(fire_station)>] -> 'fire_station'
+DN[sem=<\P.P(ambulance)>] -> 'ambulance'
+DN[sem=<\P.P(hospital)>] -> 'hospital'
+DN[sem=<\P.P(tow_truck)>] -> 'tow_truck'
+DN[sem=<\P.P(garage)>] -> 'garage'
+DN[sem=<\P.P(wreck)>] -> 'wreck'
+DN[sem=<\P.P(victims)>] -> 'victims'
+DN[sem=<\P.P(flames)>] -> 'flames'
+DN[sem=<\P.P(british_end)>] -> 'british_end'
+DN[sem=<\P.P(french_end)>] -> 'french_end'
+
+
+# These are nouns which only occur with an indefinite determiner or no det
+
+N[sem=<problem>] -> 'problem'
+N[sem=<problem>] -> 'problems'
+N[sem=<resource>] -> 'resource'
+N[sem=<resource>] -> 'resources'
+
+PREP[sem=<\y x . location(x,y)>] -> 'in'
+PREP[sem=<\y x . location(x,y)>] -> 'at'
+PREP[sem=<\x . from(x)>] -> 'from'
+PREP[sem=<\x . to(x)>] -> 'to'
+
+THE[sem=<\P x . P(x)>] -> 'the'
+EXP[sem=<\P x . P(x)>] -> 'there'
+
+
+TV[sem=<\y x . assign(x,y)>] -> 'assign'
+TV[sem=<\y x . remove(x,y)>] -> 'remove'
+TV[sem=<\y x . evacuate(x,y)>] -> 'evacuate'
+TV[sem=<\y x . extinguish(x,y)>] -> 'extinguish'
+TV[sem=<\y x . return(x,y)>] -> 'return'
+TV[sem=<\x . rush_to(x)>] -> 'rush_to'
+
+
+VCOP[sem = <is>] -> 'is'
+VCOP[sem = <is>] -> 'are'
+
+# This is 'where' as a whole NP, as in "where is the ambulance"
+
+WHNP[sem = <\y.exists x.location(y,x)>] -> 'where'

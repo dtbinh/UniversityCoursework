@@ -1,0 +1,64 @@
+1) s0943941
+
+Original: fireambtow.accepts(['assign(british_end,fire_brigade)','extinguish(flames,from(british_end))','assign(british_end,ambulance)','assign(british_end,tow_truck)','evacuate(victims,from(british_end))','remove(wreck,from(british_end))','return(fire_brigade,to(fire_station))','return(ambulance,to(hospital))','return(tow_truck,to(garage))'])
+
+     -> This statement, as specified in the handout, returns true for fireambtow.
+
+a) fireambtow.accepts(['extinguish(flames,from(british_end))','assign(british_end,fire_brigade)','assign(british_end,ambulance)','assign(british_end,tow_truck)','evacuate(victims,from(british_end))','remove(wreck,from(british_end))','return(fire_brigade,to(fire_station))','return(ambulance,to(hospital))','return(tow_truck,to(garage))']) 
+
+     -> This statement returns false for fireambtw, because you are attempting to extinguish the flames before assigning the fire_brigade.
+
+b) chunnel.accepts(['assign(british_end,fire_brigade)','extinguish(flames,from(british_end))','assign(british_end,ambulance)','assign(british_end,tow_truck)','evacuate(victims,from(british_end))','remove(wreck,from(british_end))','return(fire_brigade,to(fire_station))','return(ambulance,to(hospital))','return(tow_truck,to(garage))']) 
+      
+     -> This statement returns true, because everything is completed in the order specified by syncservices.
+
+c) chunnel.accepts(['assign(british_end,fire_brigade)','extinguish(flames,from(british_end))','assign(british_end,ambulance)','assign(british_end,tow_truck)','remove(wreck,from(british_end))', 'evacuate(victims,from(british_end))','return(fire_brigade,to(fire_station))','return(ambulance,to(hospital))','return(tow_truck,to(garage))']) 
+
+     -> This statement returns false, because chunnel does not allow you to remove the wreckage before evacuating the victims.
+
+fireambtow.accepts(['assign(british_end,fire_brigade)','extinguish(flames,from(british_end))','assign(british_end,ambulance)','assign(british_end,tow_truck)','remove(wreck,from(british_end))', 'evacuate(victims,from(british_end))','return(fire_brigade,to(fire_station))','return(ambulance,to(hospital))','return(tow_truck,to(garage))'])
+
+      -> This statement returns true, because fireambtow has no specification of what order the rescue operation takes place in. 
+
+2) 
+
+firefrench = FSA.concatenation(cb1,fo1,FSA.closure(FSA.concatenation(rtf,fo2,rtb,fo1)),FSA.union(FSA.concatenation(rtf,fo2,rbf),rbf))
+firebritish = FSA.concatenation(cb2,fo2,FSA.closure(FSA.concatenation(rtb,fo1,rtf,fo2)),FSA.union(FSA.concatenation(rtb,fo1,rbf),rbf))
+myfiretruck = FSA.minimize(FSA.closure(FSA.union(firebritish,firefrench)))
+
+
+
+
+3) Completed With Assistance From Craig Innes
+
+###
+This code is if the ambulance can go back and forth between the sides, picking up victims (identical to the firetruck) when in "routine" mode. 
+
+ambfrench2 = FSA.concatenation(ca1,pe1,FSA.closure(FSA.concatenation(ca2,pe2,ca1,pe1)),FSA.union(FSA.concatenation(ca2,pe2,rba),rba))
+ambbritish2 = FSA.concatenation(ca2,pe2,FSA.closure(FSA.concatenation(ca1,pe1,ca2,pe2)),FSA.union(FSA.concatenation(ca1,pe1,rba),rba))
+rmode2 = FSA.closure(FSA.union(ambfrench2, ambbritish2)) (This would replace rmode if the ambulance can pick up an infinite number of victims)
+
+However, this did not seem practical, so instead I have made the assumption that the ambulance can go to one side, and choose to either go back to the hospital or continue to the other side. From there, it must go back to drop off the victims. 
+###
+change = FSA.singleton('changemodes')
+
+ambbritish = FSA.closure(FSA.concatenation(ca1,pe1, FSA.union(rba,FSA.concatenation(ca2,pe2,rba))))
+ambfrench = FSA.closure(FSA.concatenation(ca2,pe2, FSA.union(rba,FSA.concatenation(ca1,pe1,rba))))
+
+smode = FSA.closure(FSA.union(FSA.concatenation(ca1,pe1,rba),FSA.concatenation(ca2,pe2,rba)))
+rmode = FSA.closure(FSA.union(ambfrench,ambbritish))
+cmode = FSA.closure(FSA.concatenation(change,change))
+
+ambu1 = FSA.closure(FSA.concatenation(change,rmode,change))
+ambu2 = FSA.concatenation(change,rmode,cmode)
+
+entire = FSA.minimize(FSA.closure(FSA.concatenation(cmode,smode, ambu1)))
+myambulance = FSA.minimize(FSA.union(FSA.concatenation(entire, ambu2),entire))
+
+
+
+4) Syncservices is composed of the interleave of syncservices1 and syncservices2, which deal with the British and French sides of the Chunnel respectively. The individual syncservices serve to limit the order of the respective sides. First, it takes a set of unioned transitions that do not affect the required conditions for completion and loop back to the single state with a closure. These include steps such as assign or return. Only if the transition is first to extinguish flames, then to evacuate the victims, and finally to remove the wreckage does the machine proceed to the next state. Thus, the individual sync services have 3 states. To account for assisting both sides of the chunnel before the disaster is fully fixed, we interleave the two sides together, requiring either one side to be completed before fixing the other or both must be solved within 6 transitions. This works in conjecture with the rest of the machine, which makes the appropriate transitions for the "non-required" steps. If we receive a message such as evacuate before the flames are extinguishes, the "sequence" is not accepted and the machine is forced to terminate. 
+
+To implement the request to have the ambulance and the tow truck at their original locations after each, we first must remove the return hospital and return garage actions from the list of unnecessary steps and declare at as a new union. Then, we add two states to the original three. The path goes from extinguishing the fire, to evacuating the victims with the same as before. Then, rather than having syncservices2 = FSA.closure(FSA.concatenation(oastar,fo2u,oastar,pe2u,oastar,wc2u,oastar)), we have syncservices2 = FSA.closure(FSA.concatenation(oastar,fo2u,oastar,pe2u,retambhosp, returnhospital, oastar, wc2u, rettowgar, returngarage, oastar)) where retambhosp is oastar without return hospital in it, rettowgar is oastar without return garage in it, returnhospital is the command to return the ambulance to the hospital and returngarage does the same for the tow truck. The combined interleave of syncservices in respect to both the french and british size would be a fsm of size 25. 
+
+

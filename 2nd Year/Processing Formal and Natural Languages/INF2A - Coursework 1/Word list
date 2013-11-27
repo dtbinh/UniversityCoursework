@@ -1,0 +1,38 @@
+[('This', 'DT'), ('is', 'VBZ'), ('the', 'DT'), ('heart', 'NN'), ('of', 'IN'), ('our', 'PRP$'), ('task', 'NN'), ('.', '.')]
+
+[('The', 'DT'), ('Government', 'NNP'), ('will', 'MD'), ('not', 'RB'), ('assail', 'VB'), ('you', 'PRP'), ('.', '.')]
+
+[('We', 'PRP'), ('hear', 'VBP'), ('much', 'RB'), ('of', 'IN'), ('special', 'JJ'), ('interest', 'NN'), ('groups', 'NNS'), ('.', '.')]
+
+[('Their', 'PRP$'), ('economic', 'JJ'), ('life', 'NN'), ('is', 'VBZ'), ('primitive', 'JJ'), ('and', 'CC'), ('stagnant', 'JJ'), ('.', '.')]
+
+[('That', 'DT'), ('false', 'NN'), ('philosophy', 'NN'), ('is', 'VBZ'), ('communism', 'NN'), ('.', '.')]
+
+[('Courage', 'NN'), ('and', 'CC'), ('confidence', 'NN'), ('have', 'VBP'), ('been', 'VBN'), ('restored', 'VBN'), ('.', '.')]
+
+[[('Time', 'NNP'), ('is', 'VBZ'), ('a', 'DT'), ('great', 'JJ'), ('corrective', 'JJ'), ('.', '.')]]
+
+[('This', 'DT'), ('country', 'NN'), ('believes', 'VBZ'), ('in', 'IN'), ('prosperity', 'NN'), ('.', '.')]
+
+[('We', 'PRP'), ('are', 'VBP'), ('reunited', 'VBN'), ('.', '.')]
+
+[('This', 'DT'), ('is', 'VBZ'), ('the', 'DT'), ('only', 'JJ'), ('substantial', 'JJ'), ('dispute', 'NN'), ('.', '.')]
+
+DT -> This | the | The | That | 
+VBZ -> is | believes
+NN -> heart | task | interest | life | false | philosophy | communism | Courage | confidence  country | propserity | dispute
+IN -> of | in
+PRP$ -> our | Their
+. -> .
+NNP -> Government
+MD -> will
+RB -> not | much
+VB -> assail
+PRP -> you | We | 
+VBP -> hear | have | are
+JJ -> economic | special | primitive | stagnant | only | substantial
+NNS -> groups
+CC -> and
+VBN -> been | restored | reunited
+
+NP -> DT NNP | DT | PRP | DT NN | NN CC NN | DT NN NN | PRP$ JJ NN
