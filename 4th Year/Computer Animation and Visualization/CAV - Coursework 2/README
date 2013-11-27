@@ -1,0 +1,37 @@
+Readme
+
+To run:
+Make (or Make Clean)
+./cav2
+
+or
+./run.sh
+
+Press 8 to see just the skull
+Press 9 to see just the skin
+Press 0 to see the skin within the skull
+Press z to decrease the scale 
+Press x to increase the scale 
+Press o to rotate the skull counter clockwise
+Press p to rotate the skull clockwise
+Press 1 to increase the skin threshold value
+Press 2 to decrease the skin threshold value
+Press 3 to increase the bone threshold value
+Press 4 to decrease the bone threshold value
+
+
+Basic Ray Casting 
+
+For each draw loop, I iterate over the height and the depth (as this shows the skull from the front). Next, assuming that the camera is the center of the screen and is around 512 pixels away (value taken from the orthographic projection given in the main function), I cast a ray from the camera to each pixel on the screen (which is the current height and depth values). Then, for each width, I create a plane that is parallel to the screen. From analytical geometric, I determine where my ray will intersect the plane by finding the scalar distance where the values are equal. This distance, d, equals the pixel where the ray has passed through minus some arbitrary point on the plane, dotted with the plane's normal vector, divided the dot product of line direction (camera to pixel) and the plane's normal (see Wikipedia for proper mathamatical notation http://en.wikipedia.org/wiki/Line-plane_intersection). 
+
+Where the line intersects the plane are a series of coordinates. First, if there are any rotations involved, I manipulate these points by the rotation matrix to correct their positions. Next, I check if the coordinates are within the bounds of the image. If they are outside, they are ignored. If inside, they are fetched, and scaled by a constant to dampen the effects (provides better transparency).
+
+From this scaled value, I calculate the accumulated alpha via the forward casting of the ray. For each ray that is cast through a pixel, the alpha and the color channels are initially zero. The alpha is increased - it takes the scaled value from the head file as the alpha, and performs the following equation: alpha + (1-alpha)*accumulated alpha. 
+
+Next, the frame buffer for this particular ray is calculated. This is equivalent to the previous frame buffer, with the addition of (1- the accumulated alpha of before) * alpha (scaled head value) * the light from the object. The light is found via a color transfer function - this function maps the scaled value from the head to a particular color. If the value is too low (below 50), then it is background noise and set to black. 
+
+Else, there are a few options - if the bones are the only things showing, then anything above 90 is considered bone and is painted white and the skin is painted black. If only the skin is showing, anything up to 230 is considered skin and is painted blue. If both are showing, then the bone has anything above 90 considered bone, but between 90 and 50, is considered skin and painted blue. These are personal thresholds - however, I'm colorblind and there may be better values given. Therefore, the numbers 1 and 2 increase and decrease the skin values and the numbers 3 and 4 increase and decrease the bone values to determine the best ones given the situation. 
+
+Regardless of the color returned, it is adjusted by the 1 - accumulated alpha and the current alpha value. This adjusted color is added onto the frame buffer. Next, the accumulated alpha value is checked. If this value has reached a certain strength (.95), then any additional alpha values will not appear when calculated, and so the ray can terminate early.
+
+Once the ray has finished (either from early termination, or by traversing the entire width of the data), it can be drawn on the screen. The accumulated render buffer is drawn using glColor3f, and glVertex3f, using the height and depth to draw on screen. This process is repeated for each pixel on the screen.
