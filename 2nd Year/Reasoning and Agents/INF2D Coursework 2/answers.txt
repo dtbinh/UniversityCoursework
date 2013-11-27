@@ -1,0 +1,308 @@
+-----------------------------------------------------------------------
+ ------ Informatics 2D - 2010/11 - Second Assignment - Planning ------
+-----------------------------------------------------------------------
+ 
+ Write here you matriculation number (only - your name is not needed)
+ Matriculation Number: s0943941
+ 
+
+--------------------------- Knowledge Base ----------------------------
+
+- Predicate and fluents -----------------------------------------------
+
+--Predicates--
+
+room(x) 
+	where x is any room 
+
+lift(x) 
+	where x is a lift
+
+adjacent(x,y) 
+	where x is a room and y is adjacent to it.
+
+direction(x)
+	where x is either up or down
+
+vertical(x,y,direction)
+	where x is a lift, and y is the resulting location toward direction
+
+--Fluents--
+
+position(x, s)
+	where s is the current situation. This gives the location of the robot (x)
+
+cleaned(room,s)
+	where room is the current room and s is the current situation. 
+
+
+
+- Initial state -------------------------------------------------------
+
+room(r1)
+room(r2)
+room(r3)
+room(r4)
+room(r5)
+room(r6)
+room(r7)
+
+lift(lg)
+lift(l1)
+lift(l2)
+
+direction(up)
+direction(down)
+
+adjacent(r1,l2)
+adjacent(l2,r1)
+
+adjacent(r1,r2)
+adjacent(r2,r1)
+
+adjacent(r3,r5)
+adjacent(r5,r3)
+
+adjacent(r4,r5)
+adjacent(r5,r4)
+
+adjacent(l1,r5)
+adjacent(r5,l1)
+
+adjacent(r6,r7)
+adjacent(r7,r6)
+
+adjacent(r6,lg)
+adjacent(lg,r6)
+
+adjacent(lg,r7)
+adjacent(r7,lg)
+
+vertical(lg,l1,up)
+vertical(l1,lg,down)
+vertical(l1,l2,up)
+vertical(l2,l1,down)
+
+¬cleaned(r1,s0)
+¬cleaned(r2,s0)
+¬cleaned(r3,s0)
+¬cleaned(r4,s0)
+¬cleaned(r5,s0)
+¬cleaned(r6,s0)
+¬cleaned(r7,s0)
+
+(This is assumed by the program at later points - if not mentioned, assumed false)
+
+position(r5, s0)
+
+
+------------------------------ Actions --------------------------------
+
+- Action: move-between-rooms -------------------------------------------------------
+
+--move(x,y)--
+
+--Possibility axiom--
+position(x,s) and adjacent(x,y) => Poss(move(x,y),s)
+
+--CNF--
+A) ¬position(x,s) or ¬adjacent(x,y) or Poss(move(x,y),s)
+
+--Effect Axiom--
+Poss(move(x,y),s) => position(y,Result(move(x,y),s))
+
+
+- Action: move-between-floors --------possibly add -------------------------------------------------
+
+--elevator(x,y,direction)--
+
+--Possibility axiom--
+position(x,s) and vertical(x,y, direction) => Poss(elevator(x,y),s)
+
+--CNF--
+B) ¬position(x,s) or ¬vertical(x,y,direction) or Poss(elevator(x,y),s)
+
+--Effect Axiom--
+Poss(elevator(x,y,direction),s) => position(y,Result(elevator(x,y,direction),s))
+
+
+- Action: dust -------------------------------------------------------
+
+--dust(x)--
+
+--Possibility axiom--
+position(x,s) and not cleaned(x,s) => Poss(dust(x),s)
+
+--CNF--
+C) ¬position(x,s) or cleaned(x,s) or Poss(dust(x),s)
+
+--Effect Axiom--
+Poss(dust(x),s) => cleaned(x,Result(dust(x),s))
+
+
+
+- Additional Predicate or fluents -------------------------------------
+
+
+
+- The issue with the update of unchanged information? -----------------
+
+The issue of unchanged information is known as the Frame Problem. This problem stems from the idea that effect axioms only indicate what has changed, but not what has remained unchanged. We cannot assume any of this information, so we are forced to encode several "frames" indicating what has not changed. However, in a large enough model, we will encounter too many frames to feasibly represent. 
+
+Successor states offer a solution to this issue, by indicating in which situations an action will be true in the next state (i.e. the robot can complete the task) and which situations an action will be false (i.e. the robot cannot complete the task). If the negative and positive actions represent all potential actions that can be completed, they are combined into a single statement where it is of the form: (resulting state) <=> action is true or action is false and the current state is unchanged. 
+
+Planning formalisms limit the necessary calculations required to define a "success" - that is, they define what can and cannot be achieved in a manner which limits the amount of frames required to solve the frame problem. They assume whatever is not mentioned will remain unchanged. If the effect axiom is positive, it is added to the predicates; if negative, it is removed. 
+
+
+- Successor-state axioms ----------------------------------------------
+
+--Successor state for position--
+Poss(a,s) => (position(y, Result(a,s)) <=> (a = move(x,y) or a = elevator(x,y)) or (position(y,s) and not (a = move(y,z) or a = elevator(y,z))))
+
+--CNF
+Poss(a,s) => (position(y, Result(a,s)) => (a = move(x,y) or a = elevator(x,y)) or (position(y,s) and not (a = move(y,z) or a = elevator(y,z))))
+Poss(a,s) => (position(y, Result(a,s)) <= (a = move(x,y) or a = elevator(x,y)) or (position(y,s) and not (a = move(y,z) or a = elevator(y,z))))
+
+--We want the bottom one, because we are proving backwards
+
+¬Poss(a,s) or (position(y, Result(a,s)) <= ((a = move(x,y) or a = elevator(x,y)) or (position(y,s) and not (a = move(y,z) or a = elevator(y,z)))))
+¬Poss(a,s) or (position(y, Result(a,s)) or ¬((a = move(x,y) or a = elevator(x,y)) or (position(y,s) and not (a = move(y,z) or a = elevator(y,z)))))
+¬Poss(a,s) or (position(y, Result(a,s)) or (¬(a = move(x,y) or a = elevator(x,y)) and ¬(position(y,s) and not (a = move(y,z) or a = elevator(y,z)))))
+¬Poss(a,s) or (position(y, Result(a,s)) or ((¬a = move(x,y) and ¬a = elevator(x,y)) and (¬position(y,s) or (a = move(y,z) or a = elevator(y,z)))))
+
+D) ¬Poss(a,s) or position(y,Result(a,s)) or ¬a = move(x,y)
+	and
+E) ¬Poss(a,s) or position(y,Result(a,s)) or ¬a = elevator(x,y)
+	and
+F) ¬Poss(a,s) or position(y,Result(a,s)) or ¬position(y,s) or a = move(y,z) or a = elevator(y,z)
+
+
+
+--Successor state for cleaned--
+Poss(a,s) => (cleaned(x, Result(a,s)) <=> a = dust(x) or (cleaned(x,s) and ¬a = dust(y)))
+
+--CNF--
+Poss(a,s) => (cleaned(x, Result(a,s)) => a = dust(x) or (cleaned(x,s) and ¬a = dust(y))) and 
+Poss(a,s) => (cleaned(x, Result(a,s)) <= a = dust(x) or (cleaned(x,s) and ¬a = dust(y))) 
+
+--We want the bottom one, because we are proving backwards
+
+¬Poss(a,s) or (cleaned(x, Result(a,s)) <= a = dust(x) or (cleaned(x,s) and ¬a = dust(y))) 
+¬Poss(a,s) or cleaned(x, Result(a,s)) or ¬( a = dust(x) or (cleaned(x,s) and ¬a = dust(y)))
+¬Poss(a,s) or cleaned(x, Result(a,s)) or ¬a = dust(x) and ¬(cleaned(x,s) and ¬a = dust(y))
+¬Poss(a,s) or cleaned(x, Result(a,s)) or ¬a = dust(x) and ¬cleaned(x,s) or a = dust(y)
+
+¬Poss(a,s) or cleaned(x, Result(a,s)) or ¬a = dust(x) 
+	and 
+¬Poss(a,s) or cleaned(x, Result(a,s)) or ¬cleaned(x,s) or a = dust(y)
+
+G) ¬Poss(a,s) or cleaned(x, Result(a,s)) or ¬a = dust(x) 
+H) ¬Poss(a,s) or cleaned(x, Result(a,s)) or ¬cleaned(x,s) or a = dust(y)
+
+
+---------------------- Resolution and Refutation ----------------------
+
+- Proof by refutation: Es. dusted(R1, s) ------------------------------
+
+Current world: 
+room(r1), room(r2), room(r3), room(r4), room(r5), room(r6), room(r7)
+
+lift(lg), lift(l1), lift(l2)
+
+adjacent(r1,l2), adjacent(l1,r2)
+adjacent(r1,r2), adjacent(r2,r1)
+adjacent(r3,r5), adjacent(r5,r3)
+adjacent(r4,r5), adjacent(r5,r4)
+adjacent(l1,r5), adjacent(r5,l1)
+adjacent(r6,r7), adjacent(r7,r6)
+adjacent(r6,lg), adjacent(lg,r6)
+adjacent(lg,r7), adjacent(r7,lg)
+
+vertical(lg,l1,up), vertical(l1,lg,down)
+vertical(l1,l2,up), vertical(l2,l1,down)
+
+position(r5, s0)
+
+cleaned(r1,s) <= Goal
+
+A) ¬position(x,s) or ¬adjacent(x,y) or Poss(move(x,y),s)
+B) ¬position(x,s) or ¬vertical(x,y,direction) or Poss(elevator(x,y),s)
+C) ¬position(x,s) or cleaned(x,s) or Poss(dust(x),s)
+D) ¬Poss(a,s) or position(y,Result(a,s)) or ¬a = move(x,y)
+E) ¬Poss(a,s) or position(y,Result(a,s)) or ¬a = elevator(x,y)
+F) ¬Poss(a,s) or position(y,Result(a,s)) or ¬position(y,s) or a = move(y,z) or a = elevator(y,z)
+G) ¬Poss(a,s) or cleaned(x, Result(a,s)) or ¬a = dust(x) 
+H) ¬Poss(a,s) or cleaned(x, Result(a,s)) or ¬cleaned(x,s) or a = dust(y)
+
+Start with the negation
+¬cleaned(r1,s')
+
+Apply axiom G
+G) ¬Poss(a,s) or cleaned(x, Result(a,s)) or ¬a = dust(x) 
+with x=r1 and Result(a,s) = s'
+
+¬cleaned(r1,s') or ¬Poss(a,s) or cleaned(r1,s') or ¬a = dust(r1)
+
+Reduces to
+¬Poss(a,s) or ¬a = dust(r1)
+
+Apply axiom C
+C) ¬position(x,s) or cleaned(x,s) or Poss(dust(x),s)
+with a=dust(r1), x=r1 
+
+¬position(r1,s) or  cleaned(r1,s)
+
+reduces to
+¬position(r1,s)
+
+Apply Axiom D
+D) ¬Poss(a,s) or position(y,Result(a,s)) or ¬a = move(x,y)
+with y=r1
+
+¬Poss(a,s) or ¬a = move(x,r1)
+
+Apply Axiom A
+A) ¬position(x,s) or ¬adjacent(x,y) or Poss(move(x,y),s)		
+with a=move(l2,r1), x=l2, y=r1 from the KB about adjacent(l2,r1)
+
+¬position(l2,s) or ¬adjacent(l2,r1) or Poss(move(l2,r1),s) or ¬Poss(move(l2,r1))
+
+Reduces to 
+¬position(l2,s)
+
+Apply Axiom E
+E) ¬Poss(a,s) or position(y,Result(a,s)) or ¬a = elevator(x,y)
+with y=r5
+
+¬Poss(a,s) or ¬a = elevator(x,l2)
+
+Apply Axiom B
+B) ¬position(x,s) or ¬vertical(x,y,direction) or Poss(elevator(x,y),s)
+with a=elevator(l1,l2), x=l1, y=l2, direction=up from the KB about vertical(l1,l2,up)
+
+Reduces to
+¬position(l1,s) 
+
+Apply Axiom D
+D) ¬Poss(a,s) or position(y,Result(a,s)) or ¬a = move(x,y)
+with y=l1
+
+reduces to 
+¬Poss(a,s) or ¬a = move(x,l1)
+
+Apply Axiom A
+A) ¬position(x,s) or ¬adjacent(x,y) or Poss(move(x,y),s)		
+with a=move(r5,l1), x=r5, y=l1 from the KB about adjacent(r5,l1)
+
+reduces to
+¬position(r5,s)
+
+But our initial state says that position(r5,s0), which means this reduces to an empty set. This means the initial assumption cannot be true. Proof by negation holds, and thus we can prove cleaned(r1,s') can be true.
+
+--Does the order in which you defined the actions matter? Explain why/ why not----------
+
+The order does matter, because Golog processes the commands top down. This means it will check all the possible actions starting with the first one. We can take advantage of this process by reordering the actions in a manner that works. For example, because the tasks given are related to cleaning, we should always check to see if dusting a room will satisfy the goal state first. When you turn the debug function on in any instance task, it becomes apparent the first action on the list is checked first, moving progressively down the list. Thus, quicker solutions will be found if the actions are ordered in a manner logically sound. 
+
+
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
