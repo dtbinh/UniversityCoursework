@@ -1,1 +1,1 @@
-Created an Android application for Android 2.3. Allows users to find their position without using Google maps and find directions to the Informatics Forum in Edinburgh. Additionally, gives a list of hotels, restaurants and cafes that may be of interest to individuals 
+Created an Android application for Android 2.3. Allows users to find their position without using Google maps and find directions to the Informatics Forum in Edinburgh. Additionally, gives a list of hotels, restaurants and cafes that may be of interest to individuals as a database.
