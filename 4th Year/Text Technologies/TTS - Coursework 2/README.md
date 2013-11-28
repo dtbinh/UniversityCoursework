@@ -1,0 +1,1 @@
+Created a basic search engine that, given a query, returns a relevent set of documents. Three different functions were used to find the related queries - a simple word overlap function to determine similarity, tfidf value, and a best - which combines both tfidf and a spellchecker to improve the results. 
