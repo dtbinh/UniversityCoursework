@@ -1,1 +1,1 @@
-Assignment creates a basic teapot, based on a few different line algorithms, and allows user interaction. Coded in C++
+Assignment creates a basic teapot, based on a few different line algorithms, and allows user interaction. Coded in C++. Readme.txt gives information on how to run the program, teapot.png contains an example of the teapot. The other three are pieces of code extended to fulfill the coursework task. 
