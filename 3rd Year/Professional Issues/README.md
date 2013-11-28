@@ -1,0 +1,1 @@
+Professional Issues essay detailing concerns about the ICT approach to Computer Security in the (as of the time of writing the report) forthcoming UK government ICT proposal. Included to showcase that I am not just a code monkey - I sometimes write boring essays about politics concerning code monkeys
