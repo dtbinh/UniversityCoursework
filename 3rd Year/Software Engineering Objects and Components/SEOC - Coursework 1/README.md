@@ -1,0 +1,1 @@
+Given a sample document containing a list of demands from a company, a team of five identified use cases, requirements, a class diagram, and CRC cards. The process and end results are seen in the first deliverable. This deliverable was then improved upon for the second grade. 
