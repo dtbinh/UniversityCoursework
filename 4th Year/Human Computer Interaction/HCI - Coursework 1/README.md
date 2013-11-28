@@ -1,0 +1,1 @@
+Pair-programming assignment to design an image-editing software that allows users to draw lines around an object. Completed in Java and Swing, and report includes justifications for design decisions based on usability. 
