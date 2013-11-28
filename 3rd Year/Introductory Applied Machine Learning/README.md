@@ -1,0 +1,1 @@
+Machine Learning coursework, using WEKA to classify a series of training and testing data as faces. Uses SVM, Decision Trees, and Naive Bayes for the various sections. Report included in sub-folder iamlans
