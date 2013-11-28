@@ -1,0 +1,1 @@
+Visualize a set of medical data (of a disembodied head) to render transparent skin and showcase the skull underneath the skin. The blue png is the best representation of the final result. Readme.txt gives information of how to run the program. Written in C++
