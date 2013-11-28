@@ -1,1 +1,1 @@
-Report that includes analysis of a classmate's code, with regard to how they achieved usability. The graphs are a series of tests performed on individuals to get information on how the users performed 
+Report that includes analysis of a classmate's code, with regard to how they achieved usability. The graphs are a series of tests performed on individuals to get information on how the users performed - IOGraph represents mouse movements, and the two xslx files are tables representing how the user did while performing a specific set of actions. 
