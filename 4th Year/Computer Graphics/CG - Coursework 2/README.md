@@ -1,0 +1,1 @@
+README.txt contains information about how to run the program. The rest of the program implements drawing/shading algorithms (phong/gouraud shading) to create a colored teapot, as well as shadows on a floor. Example included as png file. 
