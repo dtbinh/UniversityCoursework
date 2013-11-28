@@ -1,0 +1,1 @@
+In Python, created three functions - one to detect exact duplicates of a webpage, one to detect near duplicates of a webpage, and a third that uses Finn's Method to identify the content section of an HTML page based on comparing tags vs tokens. Report included within
